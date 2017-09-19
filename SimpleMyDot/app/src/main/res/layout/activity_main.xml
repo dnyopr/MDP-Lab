@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="kmitl.lab03.somkiat42.simplemydot.MainActivity">
+
+    <kmitl.lab03.somkiat42.simplemydot.view.DotView
+        android:id="@+id/dotView"
+        android:layout_height="493dp"
+        android:layout_width="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintLeft_creator="1" />
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/fragmentContainer"
+        android:name="kmitl.lab03.somkiat42.simplemydot.fragment.main"
+        tools:layout="@layout/fragment_main" />
+
+
+    <Button
+        android:id="@+id/randomDot"
+        android:onClick="onRandomDot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/random_dot"
+        android:layout_marginStart="57dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toBottomOf="@+id/dotView"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="57dp" />
+
+    <Button
+        android:id="@+id/removeAll"
+        android:onClick="onRemoveAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remove All Dot"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        android:layout_marginStart="36dp"
+        app:layout_constraintBottom_toBottomOf="@+id/dotView"
+        android:layout_marginEnd="39dp"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="6dp"
+        app:layout_constraintLeft_toRightOf="@+id/randomDot"
+        android:layout_marginLeft="36dp"
+        android:layout_marginRight="39dp" />
+
+</android.support.constraint.ConstraintLayout>
