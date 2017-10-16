@@ -132,13 +132,11 @@
         android:layout_marginStart="8dp" />
 
     <fragment
-        android:id="@+id/fragment"
+        android:id="@+id/choose_acc_fragment"
         android:name="com.kmitl.danaya58070042.lazyinstagram.fragment.MainFragment"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout="@layout/fragment_main" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:layout="@layout/fragment_main"/>
 
 
 </android.support.constraint.ConstraintLayout>
