@@ -1,4 +1,4 @@
-package danaya58070042.kmitl.moneyflow;
+package danaya58070042.kmitl.moneyflow.model;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
@@ -15,13 +15,13 @@ public class MoneyFlow {
     @PrimaryKey(autoGenerate = true)
     private int id;
 
-    @ColumnInfo(name = "type")
+    @ColumnInfo(name = "TYPE")
     private String type;
 
-    @ColumnInfo(name = "detail")
-    private String detail;
+    @ColumnInfo(name = "DESCRIBE")
+    private String describe;
 
-    @ColumnInfo(name = "amount")
+    @ColumnInfo(name = "AMOUNT")
     private String amount;
 
     public int getId() {
@@ -40,12 +40,12 @@ public class MoneyFlow {
         this.type = type;
     }
 
-    public String getDetail() {
-        return detail;
+    public String getDescribe() {
+        return describe;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public void setDescribe(String detail) {
+        this.describe = detail;
     }
 
     public String getAmount() {

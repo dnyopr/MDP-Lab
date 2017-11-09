@@ -1,19 +1,22 @@
 package danaya58070042.kmitl.moneyflow;
 
 import android.arch.persistence.room.Room;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TableLayout;
+
+import danaya58070042.kmitl.moneyflow.database.MoneyFlowDB;
+import danaya58070042.kmitl.moneyflow.model.MoneyFlow;
 
 public class AddData extends AppCompatActivity implements View.OnClickListener{
     Button btn_income, btn_expense, btn_save;
     EditText detail, amount;
     String type;
+    MoneyFlowDB moneyFlowDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,21 +32,13 @@ public class AddData extends AppCompatActivity implements View.OnClickListener{
         btn_expense.setOnClickListener(this);
         btn_save.setOnClickListener(this);
 
-        MoneyFlowDB moneyFlowDB = Room.databaseBuilder(this,
+        moneyFlowDB = Room.databaseBuilder(this,
                 MoneyFlowDB.class, "Moneyflow")
                 .fallbackToDestructiveMigration()
                 .build();
-        new AsyncTask<Void, Void, MoneyFlow>(){
-            @Override
-            protected MoneyFlow doInBackground(Void... voids) {
-                MoneyFlow moneyFlow = new MoneyFlow();
-                moneyFlow.setType(type);
-                moneyFlow.setDetail(String.valueOf(detail));
-                moneyFlow.setAmount(String.valueOf(amount));
 
-                return null;
-            }
-        }.execute();
+
+
     }
 
     @Override
@@ -55,6 +50,24 @@ public class AddData extends AppCompatActivity implements View.OnClickListener{
             type = "-";
         }
         else if(R.id.btn_save == view.getId()){
+            new AsyncTask<Void, Void, MoneyFlow>(){
+                @Override
+                protected MoneyFlow doInBackground(Void... voids) {
+                    MoneyFlow moneyFlow = new MoneyFlow();
+
+                    moneyFlow.setType(type);
+                    moneyFlow.setDescribe(String.valueOf(detail));
+                    moneyFlow.setAmount(String.valueOf(amount));
+
+                    moneyFlowDB.getMoneyFlowDAO().insert(moneyFlow);
+//                    Log.wtf("back",moneyFlowDB.getMoneyFlowDAO().findAll().get(0).getDetail().toString());
+
+                    return null;
+                }
+            }.execute();
+
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
             finish();
         }
     }
