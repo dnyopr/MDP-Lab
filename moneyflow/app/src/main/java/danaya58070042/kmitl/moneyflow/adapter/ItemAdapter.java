@@ -2,7 +2,6 @@ package danaya58070042.kmitl.moneyflow.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,12 +31,13 @@ class Holder extends RecyclerView.ViewHolder{
 public class ItemAdapter extends RecyclerView.Adapter<Holder> {
 
     private Context context;
-    private List<MoneyFlow> list;
+    private List<MoneyFlow> moneyFlowList;
     private MoneyFlowAdapterListener listener;
+
 
     public ItemAdapter(Context context, List<MoneyFlow> list, MoneyFlowAdapterListener listener) {
         this.context = context;
-        this.list = list;
+        this.moneyFlowList = list;
         this.listener = listener;
     }
 
@@ -51,14 +51,21 @@ public class ItemAdapter extends RecyclerView.Adapter<Holder> {
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
+        showList(holder,position);
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return moneyFlowList.size();
     }
 
     public void showList(Holder holder, int position){
+        final MoneyFlow moneyFlow = moneyFlowList.get(position);
+
+        holder.type.setText(moneyFlow.getType());
+        holder.desc.setText(moneyFlow.getDescribe());
+        holder.amount.setText(moneyFlow.getAmount());
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

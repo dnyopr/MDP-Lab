@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,12 +57,10 @@ public class AddData extends AppCompatActivity implements View.OnClickListener{
                     MoneyFlow moneyFlow = new MoneyFlow();
 
                     moneyFlow.setType(type);
-                    moneyFlow.setDescribe(String.valueOf(detail));
-                    moneyFlow.setAmount(String.valueOf(amount));
+                    moneyFlow.setDescribe(detail.getText().toString());
+                    moneyFlow.setAmount(Integer.valueOf(amount.getText().toString()));
 
                     moneyFlowDB.getMoneyFlowDAO().insert(moneyFlow);
-//                    Log.wtf("back",moneyFlowDB.getMoneyFlowDAO().findAll().get(0).getDetail().toString());
-
                     return null;
                 }
             }.execute();

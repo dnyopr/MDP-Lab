@@ -22,7 +22,7 @@ public class MoneyFlow {
     private String describe;
 
     @ColumnInfo(name = "AMOUNT")
-    private String amount;
+    private int amount;
 
     public int getId() {
         return id;
@@ -48,11 +48,11 @@ public class MoneyFlow {
         this.describe = detail;
     }
 
-    public String getAmount() {
+    public int getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(int amount) {
         this.amount = amount;
     }
 }
